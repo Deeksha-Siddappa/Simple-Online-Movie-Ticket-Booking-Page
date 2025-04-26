@@ -24,28 +24,32 @@ A simple web application for booking movie tickets. Built using **Node.js**, **E
   ```bash
   mongod
 
--Then, in your project directory, run:
+🚀 How to Run the Project:
+
+1.In your project directory, run the following command:
 
 node server.js
 
-##🌐 Access the Application
+
+🌐 Access the Application:
 
 Open your browser and go to:
 
 http://localhost:5000
 
+📦 Features:
 
-##📦 Features
+Movie selection, date, and seat booking functionality.
 
-Movie selection, date, and seat booking functionality
+Stores booking data in MongoDB.
 
-Stores booking data in MongoDB
+Simple REST API with validation for creating and managing bookings.
 
-Simple REST API with validation for creating and managing bookings
+User-friendly frontend interface for interacting with the system.
 
-User-friendly frontend interface for interacting with the system
 
-##📝 License
+📝 License:
 
-This project is for educational purposes only
+This project is for educational purposes only.
+
 
