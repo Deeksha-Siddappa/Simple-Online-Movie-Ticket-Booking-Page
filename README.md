@@ -24,11 +24,12 @@ A simple web application for booking movie tickets. Built using **Node.js**, **E
   ```bash
   mongod
 
-##🚀 How to Run the Project
+## 🚀 How to Run the Project
 
-1.In your project directory, run the following command:
-
+- Navigate to your project directory.
+- Start the server by running the following command:
 node server.js
+
 
 
 🌐 Access the Application:
