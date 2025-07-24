@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Movie Ticket Booking</h1>
+    </header>
+    <main>
+        <section id="movies">
+            <h2>Choose a Movie</h2>
+            <div class="movie" id="upcoming" onclick="selectMovie('upcoming')">
+                <img src="movie4.jpeg" alt="Upcoming Movie Poster">
+                <div class="movie-info">
+                    <h3>Upcoming Movie - Pushpa 2</h3>
+                    <p>Pushpa 2 is an upcoming Indian Telugu-language action drama film written and directed by Sukumar. It stars Allu Arjun as Pushpa Raj, who will continue his rise in the world of red sandalwood smuggling</p>
+                </div>
+            </div>
+            <div class="movie" id="thriller" onclick="selectMovie('thriller')">
+                <img src="movie5.jpg" alt="Sci-Fi ,Thriller Movie Poster">
+                <div class="movie-info">
+                    <h3>Sci-Fi, Thriller Movie - Kalki</h3>
+                    <p>Kalki 2898 AD is a futuristic Indian sci-fi film directed by Nag Ashwin featuring Prabhas in the titular role. It blends mythology with advanced technology</p>
+                </div>
+            </div>
+            <div class="movie" id="action" onclick="selectMovie('action')">
+                <img src="movie1.jpg" alt="Action Movie Poster">
+                <div class="movie-info">
+                    <h3>Action Movie - Avatar</h3>
+                    <p>Avatar, American science fiction film series and media franchise created by director James Cameron. The films follow a U.S. Marine named Jake Sully (Sam Worthington) who becomes part of a program in which human colonizers explore and exploit an alien world called Pandora</p>
+                </div>
+            </div>
+            <div class="movie" id="comedy" onclick="selectMovie('comedy')">
+                <img src="movie2.jpg" alt="Comedy Movie Poster">
+                <div class="movie-info">
+                    <h3>Comedy Movie - Aavesham</h3>
+                    <p>Aavesham is a Malayalam-language action comedy film directed by Jithu Madhavan and produced by Nazriya Nazim and Anwar Rasheed. The film features Fahadh Faasil in the lead role of a kind-hearted gangster named Ranga. It revolves around a comical series of events that befall Ranga's fiefdom</p>
+                </div>
+            </div>
+            <div class="movie" id="drama" onclick="selectMovie('drama')">
+                <img src="movie3.jpg" alt="Drama Movie Poster">
+                <div class="movie-info">
+                    <h3>Drama Movie - Follow Your Heart</h3>
+                    <p>When an eight-year-old girl loses her mother to cancer, her mother's last wish is for her to fall in love and find that special magical person. Twenty years later, she is alone, fired, and broke. When she and a friend decide to relocate to LA to start anew, she becomes attracted to their bus driver</p>
+                </div>
+            </div>
+        </section>
+        <section id="seats" style="display: none;">
+            <button id="back-button" onclick="goBack()">Back</button>
+            <h2>Select Seats</h2>
+            <div id="seat-map"></div>
+            <div id="booking-details">
+                <h3>Booking Details</h3>
+                <p>Movie: <span id="selected-movie"></span></p>
+                <p>Date: <input type="date" id="booking-date"></p>
+                <p>Theater:
+                    <select id="booking-theater">
+                        <option value="theater1">Meenakshi</option>
+                        <option value="theater2">Inox</option>
+                        <option value="theater3">Urvashi Cinema</option>
+                        <option value="theater4">Cinepolis Multiplex</option>
+                        <option value="theater5">PVR IMAX</option>
+                        <option value="theater6">Rockline Cinemas</option>
+                    </select>
+                </p>
+                <p>Price: In rupees- <span id="booking-price"></span></p>
+                <button onclick="bookTickets()">Book Tickets</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Movie Ticket Booking</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+//css
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  /* Header and Footer Styles */
+  header, footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+  }
+  
+  header h1, footer p {
+    margin: 0;
+    font-weight: normal;
+  }
+  
+  /* Main Content Styles */
+  main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Section Styles */
+  section {
+    margin-bottom: 30px;
+  }
+  
+  /* Movie Card Styles */
+  .movie {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: box-shadow 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+  
+  .movie:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  .movie img {
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .movie-info {
+    padding: 15px;
+  }
+  
+  .movie-info h3 {
+    margin: 0 0 10px;
+  }
+  
+  .movie-info p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  /* Button Styles */
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Seat Map Styles */
+  #seat-map {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .seat {
+    background-color: #ddd;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .seat:hover {
+    background-color: #ccc;
+  }
+  
+  .selected {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Booking Details Styles */
+  #booking-details {
+    margin-top: 20px;
+  }
+  
+  #booking-details p {
+    margin: 10px 0;
+  }
+  
+  #booking-date {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  #booking-theater {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  /* Footer Position */
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  //script.js
+  
+const movies = {
+    upcoming: {
+        title: "Pushpa",
+        description: "Action-packed thriller",
+        price: 300,
+        releaseDate: "2024-12-15"
+    },
+    thriller: {
+        title: "Kalki 2898 AD",
+        description: "Sci-fi adventure",
+        price: 250,
+        releaseDate: "2023-06-01"
+    },
+    action: {
+        title: "Avatar",
+        description: "Action-packed thriller",
+        price: 300,
+        releaseDate: "2021-12-25"
+    },
+    comedy: {
+        title: "Aavesham",
+        description: "Laugh out loud comedy",
+        price: 200,
+        releaseDate: "2022-02-10"
+    },
+    drama: {
+        title: "Follow Your Heart",
+        description: "Intriguing drama",
+        price: 200,
+        releaseDate: "2022-05-15"
+    }
+};
+
+let selectedMovie = "";
+
+function selectMovie(movie) {
+    selectedMovie = movie;
+    document.getElementById("selected-movie").textContent = movies[movie].title;
+    document.getElementById("booking-price").textContent = movies[movie].price;
+    document.getElementById("movies").style.display = "none";
+    document.getElementById("seats").style.display = "block";
+    displaySeats();
+}
+
+function goBack() {
+    document.getElementById("seats").style.display = "none";
+    document.getElementById("movies").style.display = "block";
+    selectedMovie = "";
+}
+
+function displaySeats() {
+    const seatMap = document.getElementById("seat-map");
+    seatMap.innerHTML = "";
+    const totalSeats = 20;
+
+    for (let i = 1; i <= totalSeats; i++) {
+        const seat = document.createElement("div");
+        seat.classList.add("seat");
+        seat.textContent = i;
+        seat.addEventListener("click", () => {
+            seat.classList.toggle("selected");
+        });
+        seatMap.appendChild(seat);
+    }
+}
+
+async function bookTickets() {
+    const selectedSeats = document.querySelectorAll(".seat.selected");
+    const bookingDate = document.getElementById("booking-date").value;
+    const bookingTheater = document.getElementById("booking-theater").value;
+
+    if (selectedSeats.length === 0 || !bookingDate || !bookingTheater) {
+        alert("Please select at least one seat and fill in all booking details.");
+        return;
+    }
+
+    const seatNumbers = Array.from(selectedSeats).map(seat => seat.textContent);
+    const bookingDetails = {
+        movie: movies[selectedMovie].title,
+        date: bookingDate,
+        theater: bookingTheater,
+        seats: seatNumbers,
+        price: movies[selectedMovie].price
+    };
+
+    // Ask for confirmation before booking
+    const confirmed = confirm('Are you sure you want to book ${seatNumbers.length} seat(s) for ${movies[selectedMovie].title} on ${bookingDate} at ${bookingTheater}?');
+    
+    if (!confirmed) {
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/book_ticket', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bookingDetails)
+        });
+
+        if (!response.ok) {
+            throw new Error('HTTP error! Status: ${response.status}');
+        }
+
+        const result = await response.text(); // Assuming server responds with text
+        alert('Booking confirmed!');
+
+        // Optionally, handle any additional actions here after successful booking
+
+        window.location.reload(); // Reload the page after successful booking
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Booking failed. Please try again.');
+    }
+}
+server.js 
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const path = require('path');
+
+const app = express();
+
+// Middleware
+app.use(bodyParser.json());
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Connect to MongoDB
+const dbURI = 'mongodb://localhost:27017/my-node-project'; // Replace 'my-node-project' with your database name
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log(err));
+
+// Movie Schema
+const bookingSchema = new mongoose.Schema({
+    movie: String,
+    date: String,
+    theater: String,
+    seats: [Number],
+    price: Number
+});
+
+const Booking = mongoose.model('Booking', bookingSchema);
+
+// Routes
+app.post('/api/book_ticket', async (req, res) => {
+    const { movie, date, theater, seats, price } = req.body;
+
+    try {
+        const newBooking = new Booking({ movie, date, theater, seats, price });
+        await newBooking.save();
+        res.status(201).send('Booking confirmed');
+    } catch (err) {
+        res.status(400).send('Error: ' + err.message);
+    }
+});
+
+// Catch-all route to serve index.html for any other routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Start Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log('Server running on port ${PORT}'));
