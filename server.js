@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -9,7 +10,8 @@ app.use(bodyParser.json());
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 // Connect to MongoDB
-const dbURI = 'mongodb+srv://dixa626:hdcMnm3ZNY2MmCio@movie-cluster.s4j55cg.mongodb.net/moviedb?retryWrites=true&w=majority&appName=movie-cluster';
+const dbURI = process.env.MONGO_URI;
+
 
  // Replace 'my-node-project' with your database name
 mongoose.connect(dbURI)
@@ -31,15 +33,16 @@ app.post('/api/book_ticket', async (req, res) => {
     try {
         const newBooking = new Booking({ movie, date, theater, seats, price });
         await newBooking.save();
-        res.status(201).send('Booking confirmed');
+        res.status(201).json({ message: 'Booking confirmed' }); // ✅ proper JSON response
     } catch (err) {
-        res.status(400).send('Error: ' + err.message);
+        res.status(400).json({ error: err.message }); // ✅ proper JSON error
     }
 });
+
 // Catch-all route to serve index.html for any other routes
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 // Start Server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -68,6 +68,7 @@ function displaySeats() {
 }
 
 // Function to handle the ticket booking process
+// Function to handle the ticket booking process
 async function bookTickets() {
     const selectedSeats = document.querySelectorAll(".seat.selected");
     const bookingDate = document.getElementById("booking-date").value;
@@ -102,13 +103,6 @@ async function bookTickets() {
             body: JSON.stringify(bookingDetails)
         });
 
-        // Handle responses with empty body (if any)
-        if (response.status === 204 || response.status === 200) {
-            alert('Booking confirmed!');
-            window.location.reload(); // Reload the page after successful booking
-            return;
-        }
-
         const result = await response.json();
 
         if (!response.ok) {
@@ -116,13 +110,11 @@ async function bookTickets() {
             throw new Error(result.error || `HTTP error! Status: ${response.status}`);
         }
 
-        alert('Booking confirmed!');
-        window.location.reload(); // Reload the page after successful booking
+        alert(result.message); // should say "Booking confirmed"
+        window.location.reload(); // Reload after success
 
     } catch (error) {
         console.error('Booking failed:', error);
         alert(`Booking failed. Please try again. Error: ${error.message}`);
     }
 }
-
-
