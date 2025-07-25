@@ -13,42 +13,48 @@
     <main>
         <section id="movies">
             <h2>Choose a Movie</h2>
+
             <div class="movie" id="upcoming" onclick="selectMovie('upcoming')">
-                <img src="movie4.jpeg" alt="Upcoming Movie Poster">
+                <img src="/movie4.jpeg" alt="Upcoming Movie Poster">
                 <div class="movie-info">
                     <h3>Upcoming Movie - Pushpa 2</h3>
-                    <p>Pushpa 2 is an upcoming Indian Telugu-language action drama film written and directed by Sukumar. It stars Allu Arjun as Pushpa Raj, who will continue his rise in the world of red sandalwood smuggling</p>
+                    <p>Pushpa 2 is an upcoming Indian Telugu-language action drama film...</p>
                 </div>
             </div>
+
             <div class="movie" id="thriller" onclick="selectMovie('thriller')">
-                <img src="movie5.jpg" alt="Sci-Fi ,Thriller Movie Poster">
+                <img src="/movie5.jpg" alt="Sci-Fi ,Thriller Movie Poster">
                 <div class="movie-info">
                     <h3>Sci-Fi, Thriller Movie - Kalki</h3>
-                    <p>Kalki 2898 AD is a futuristic Indian sci-fi film directed by Nag Ashwin featuring Prabhas in the titular role. It blends mythology with advanced technology</p>
+                    <p>Kalki 2898 AD is a futuristic Indian sci-fi film directed by Nag Ashwin...</p>
                 </div>
             </div>
+
             <div class="movie" id="action" onclick="selectMovie('action')">
-                <img src="movie1.jpg" alt="Action Movie Poster">
+                <img src="/movie1.jpg" alt="Action Movie Poster">
                 <div class="movie-info">
                     <h3>Action Movie - Avatar</h3>
-                    <p>Avatar, American science fiction film series and media franchise created by director James Cameron. The films follow a U.S. Marine named Jake Sully (Sam Worthington) who becomes part of a program in which human colonizers explore and exploit an alien world called Pandora</p>
+                    <p>Avatar is a science fiction franchise by James Cameron...</p>
                 </div>
             </div>
+
             <div class="movie" id="comedy" onclick="selectMovie('comedy')">
-                <img src="movie2.jpg" alt="Comedy Movie Poster">
+                <img src="/movie2.jpg" alt="Comedy Movie Poster">
                 <div class="movie-info">
                     <h3>Comedy Movie - Aavesham</h3>
-                    <p>Aavesham is a Malayalam-language action comedy film directed by Jithu Madhavan and produced by Nazriya Nazim and Anwar Rasheed. The film features Fahadh Faasil in the lead role of a kind-hearted gangster named Ranga. It revolves around a comical series of events that befall Ranga's fiefdom</p>
+                    <p>Aavesham is a Malayalam-language action comedy film...</p>
                 </div>
             </div>
+
             <div class="movie" id="drama" onclick="selectMovie('drama')">
-                <img src="movie3.jpg" alt="Drama Movie Poster">
+                <img src="/movie3.jpg" alt="Drama Movie Poster">
                 <div class="movie-info">
                     <h3>Drama Movie - Follow Your Heart</h3>
-                    <p>When an eight-year-old girl loses her mother to cancer, her mother's last wish is for her to fall in love and find that special magical person. Twenty years later, she is alone, fired, and broke. When she and a friend decide to relocate to LA to start anew, she becomes attracted to their bus driver</p>
+                    <p>Follow Your Heart is a drama about finding love and purpose...</p>
                 </div>
             </div>
         </section>
+
         <section id="seats" style="display: none;">
             <button id="back-button" onclick="goBack()">Back</button>
             <h2>Select Seats</h2>
@@ -67,14 +73,16 @@
                         <option value="theater6">Rockline Cinemas</option>
                     </select>
                 </p>
-                <p>Price: In rupees- <span id="booking-price"></span></p>
+                <p>Price: ₹<span id="booking-price"></span></p>
                 <button onclick="bookTickets()">Book Tickets</button>
             </div>
         </section>
     </main>
+
     <footer>
         <p>&copy; 2024 Movie Ticket Booking</p>
     </footer>
+
     <script src="/script.js"></script>
 </body>
 </html>
